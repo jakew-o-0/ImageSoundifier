@@ -39,8 +39,8 @@ typedef struct {
 } bmp_header;
 
 
-void get_header(bmp_header* header, char* path);
-void get_wave_table(float* wave_table, int size, bmp_header* header);
+void get_header(float* wave_table, int table_size, char* path);
+void get_wave_table(float* wave_table, int table_size, char* path);
 
 
 #endif

@@ -126,7 +126,7 @@ float* calc_wav_table(float F, float A, float P) {
 	static float table[256];
 	
 	for(int n = 0; n < 256; n++) {
-		table[n] = A * sin((2. * M_PI) * F * ((float)n / (float)S_RATE) + P);
+		table[n] = A * sin((2. * M_PI) * F * (float)n / (float)S_RATE + P);
 	}
 
 	return table;

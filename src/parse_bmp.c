@@ -10,7 +10,7 @@ float calc_freq(int key);
 
 
 
-void get_header(float* wave_table, int table_size, char *path) {
+void get_header(float* wave_table, int table_size, char* path) {
 	FILE* fptr = fopen(path, "rb");
 	if(fptr == NULL) {
 		printf("error opening file");
@@ -48,7 +48,7 @@ void get_header(float* wave_table, int table_size, char *path) {
 		int key = ((pix.B + pix.G + pix.R) / 3) % 12;
 		calc_freq(key);
 		for(int j = 0; j < table_size; j++) {
-			wave_table[j] = calc_wav_point(key, 0.5, 0, j);
+			wave_table[j] += calc_wav_point(key, 0.5, 0, j);
 		}
 	}
 }
@@ -59,12 +59,8 @@ float calc_freq(int key) {
 	return 110 * pow(2.0, (1.0/12) * key);
 }
 
+
+
 float calc_wav_point(float f, float a, float p, int n) {
 	return a * sin((2. * M_PI) * f * ((float)n / 44100.) + p);
-}
-
-
-
-void get_wave_table(float *wave_table, int size, bmp_header *header) {
-
 }
