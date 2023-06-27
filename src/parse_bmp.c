@@ -2,9 +2,15 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
-void parse_file(float *wave_table, char *path) {
+float calc_wav_point(float f, float a, float p, int n);
+float calc_freq(int key);
+
+
+
+void get_header(float* wave_table, int table_size, char *path) {
 	FILE* fptr = fopen(path, "rb");
 	if(fptr == NULL) {
 		printf("error opening file");
@@ -33,18 +39,32 @@ void parse_file(float *wave_table, char *path) {
 
 	
 	int image_size = infoHeader.image_hight * infoHeader.image_width;
-	char pix_table[image_size];
-
 	fseek(fptr, fileHeader.pixel_offset, SEEK_SET);
-	fread(pix_table, sizeof(char), image_size, fptr);
 
+	for(int i = 0; i < image_size; i++ ) {
+		pixel pix;
+		fread(&pix, sizeof(pixel), 1, fptr);
 
-
-	for(int i = 0; i < image_size; i += 3) {
-		
-		printf("B:%x G:%x R:%x\t", pix_table[i], pix_table[i + 1], pix_table[i + 2]);
-		if( i % 4 == 3 && i > 0)
-			printf("\n");
+		int key = ((pix.B + pix.G + pix.R) / 3) % 12;
+		calc_freq(key);
+		for(int j = 0; j < table_size; j++) {
+			wave_table[j] = calc_wav_point(key, 0.5, 0, j);
+		}
 	}
+}
+
+
+
+float calc_freq(int key) {
+	return 110 * pow(2.0, (1.0/12) * key);
+}
+
+float calc_wav_point(float f, float a, float p, int n) {
+	return a * sin((2. * M_PI) * f * ((float)n / 44100.) + p);
+}
+
+
+
+void get_wave_table(float *wave_table, int size, bmp_header *header) {
 
 }

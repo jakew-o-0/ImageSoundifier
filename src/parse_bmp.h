@@ -33,7 +33,14 @@ typedef struct {
 
 
 
-void parse_file(float* wave_table, char* path);
+typedef struct {
+	bmp_fileHeader fileHeader;
+	bmp_infoHeader infoHeader;
+} bmp_header;
+
+
+void get_header(bmp_header* header, char* path);
+void get_wave_table(float* wave_table, int size, bmp_header* header);
 
 
 #endif
