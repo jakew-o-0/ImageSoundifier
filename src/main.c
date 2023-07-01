@@ -1,4 +1,4 @@
-#include "parse_bmp.h"
+#include "parse_bitmap/parse_bmp.h"
 #include <portaudio.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -59,7 +59,7 @@ int main(void) {
 		data.wavetable[i] = 0;
 	}
 
-	char* path = "/home/jake/image_soundifier/resorces/test_image.bmp";
+	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
 	get_header(data.wavetable, 256, path);
 
 
@@ -124,18 +124,6 @@ void write_to_file(paData* data) {
 	FILE* fptr = fopen("./wav_table", "wb");
 	fwrite(data->wavetable, 256, 1, fptr);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 void catch_err(PaError err) {
 	printf("portaudio error: \n%s", Pa_GetErrorText(err));

@@ -62,5 +62,5 @@ float calc_freq(int key) {
 
 
 float calc_wav_point(float f, float a, float p, int n) {
-	return a * sin((2. * M_PI) * f * (float)n / 44100. + p);
+	return a * sin(((2. * M_PI) * f * (float)n / 44100.) + p);
 }
