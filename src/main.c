@@ -12,6 +12,7 @@ typedef struct {
 
 
 void catch_err(PaError err);
+void write_to_file(paData* data);
 
 
 
@@ -53,17 +54,16 @@ static int patestCallback( const void *inputBuffer, void *outputBuffer,
 
 
 int main(void) {
-	float wave_table[256];
+	paData data;
 	for(int i=0; i < 256; i++) {
-		wave_table[i] = 0;
+		data.wavetable[i] = 0;
 	}
 
 	char* path = "/home/jake/image_soundifier/resorces/test_image.bmp";
-	get_header(wave_table, 256, path);
+	get_header(data.wavetable, 256, path);
 
 
 
-	paData data;
 	PaError err;
 	PaStream* stream;
 	PaStreamParameters output_params;
@@ -111,7 +111,18 @@ int main(void) {
 
 	Pa_Terminate();
 	printf("Test Finished\n");
-	return 0;
+
+
+	printf("writing wave to file");
+	write_to_file(&data);
+}
+
+
+
+
+void write_to_file(paData* data) {
+	FILE* fptr = fopen("./wav_table", "wb");
+	fwrite(data->wavetable, 256, 1, fptr);
 }
 
 
