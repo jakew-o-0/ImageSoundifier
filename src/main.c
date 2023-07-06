@@ -3,17 +3,92 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define TABLE_SIZE 2048
+
+
+
 
 typedef struct {
-	float wavetable[256];
+	float wavetable[TABLE_SIZE];
 	int left_phase;
 	int right_phase;
 } paData;
 
-
 void catch_err(PaError err);
 void write_to_file(paData* data);
+void innit_paudio(PaStream* stream, paData* data);
+static int patestCallback( const void *inputBuffer, void *outputBuffer,
+                           unsigned long framesPerBuffer,
+                           const PaStreamCallbackTimeInfo* timeInfo,
+                           PaStreamCallbackFlags statusFlags,
+                           void *userData );
 
+
+
+
+int main(void) {
+	// init data struct
+	paData data;
+	data.left_phase = data.right_phase = 0;
+	for(int i=0; i < TABLE_SIZE; i++) {
+		data.wavetable[i] = 0;
+	}
+
+	// parse bitmap
+	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
+	get_header(data.wavetable, TABLE_SIZE, path);
+	{
+	// init portaudio
+	PaStream* stream;
+
+	PaError err;
+	PaStreamParameters output_params;
+
+	err = Pa_Initialize();
+	if(err != paNoError) 
+		catch_err(err);
+
+	output_params.device = Pa_GetDefaultOutputDevice();
+	if(output_params.device == paNoDevice) 
+		exit(1);
+	output_params.channelCount = 2;
+	output_params.sampleFormat = paFloat32;
+	output_params.suggestedLatency = Pa_GetDeviceInfo(output_params.device)->defaultLowOutputLatency;
+	output_params.hostApiSpecificStreamInfo = NULL;
+
+	err = Pa_OpenStream(&stream,
+			NULL,
+			&output_params,
+			44100,
+			256,
+			paClipOff,
+			patestCallback,
+			&data);
+
+	if(err != paNoError)
+		catch_err(err);
+
+	// play stream
+	if(Pa_StartStream(stream) != paNoError)
+		catch_err(err);
+
+	printf("\n\nplaying sound for 10 secs\n");
+	Pa_Sleep(10 * 1000);
+
+	if(Pa_StopStream(stream) != paNoError)
+		catch_err(err);
+
+	if(Pa_CloseStream(stream) != paNoError)
+		catch_err(err);
+
+	Pa_Terminate();
+	printf("Test Finished\n");
+	}
+
+
+	printf("writing wave to file\n");
+	write_to_file(&data);
+}
 
 
 
@@ -52,78 +127,19 @@ static int patestCallback( const void *inputBuffer, void *outputBuffer,
 
 
 
-
-int main(void) {
-	paData data;
-	for(int i=0; i < 256; i++) {
-		data.wavetable[i] = 0;
-	}
-
-	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
-	get_header(data.wavetable, 256, path);
-
-
-
-	PaError err;
-	PaStream* stream;
-	PaStreamParameters output_params;
-	
-	data.left_phase = data.right_phase = 0;
-
-	err = Pa_Initialize();
-	if(err != paNoError) 
-		catch_err(err);
-
-	output_params.device = Pa_GetDefaultOutputDevice();
-	if(output_params.device == paNoDevice) 
-		exit(1);
-	output_params.channelCount = 2;
-	output_params.sampleFormat = paFloat32;
-	output_params.suggestedLatency = Pa_GetDeviceInfo(output_params.device)->defaultLowOutputLatency;
-	output_params.hostApiSpecificStreamInfo = NULL;
-
-	err = Pa_OpenStream(&stream,
-			NULL,
-			&output_params,
-			44100,
-			256,
-			paClipOff,
-			patestCallback,
-			&data);
-
-	if(err != paNoError)
-		catch_err(err);
-	
-	err = Pa_StartStream(stream);
-	if(err != paNoError)
-		catch_err(err);
-
-	printf("sleep for 10 seconds\n");
-	Pa_Sleep(10 * 1000);
-
-	err = Pa_StopStream(stream);
-	if(err != paNoError)
-		catch_err(err);
-
-	err = Pa_CloseStream(stream);
-	if(err != paNoError)
-		catch_err(err);
-
-	Pa_Terminate();
-	printf("Test Finished\n");
-
-
-	printf("writing wave to file");
-	write_to_file(&data);
+void innit_paudio(PaStream* stream, paData* data) {
 }
 
 
 
 
 void write_to_file(paData* data) {
-	FILE* fptr = fopen("./wav_table", "wb");
-	fwrite(data->wavetable, 256, 1, fptr);
+	FILE *fptr =  fopen("./wavetable", "wb");
+	fwrite(data, sizeof(paData), 1, fptr);
 }
+
+
+
 
 void catch_err(PaError err) {
 	printf("portaudio error: \n%s", Pa_GetErrorText(err));

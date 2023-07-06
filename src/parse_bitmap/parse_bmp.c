@@ -19,24 +19,9 @@ void get_header(float* wave_table, int table_size, char* path) {
 
 	bmp_fileHeader fileHeader;
 	fread(&fileHeader, sizeof(bmp_fileHeader), 1, fptr);
-	/*
-	printf("%d\n%d\n%d\n", 	fileHeader.filetype, 
-				fileHeader.pixel_offset, 
-				fileHeader.size);
-	*/
 
 	bmp_infoHeader infoHeader;
 	fread(&infoHeader, sizeof(bmp_infoHeader), 1, fptr);
-	/*
-	printf("%d\n%d\n%d\n%d\n%d\n%d\n%d\n", 	infoHeader.header_size,
-						infoHeader.bpp, 
-						infoHeader.compression,
-						infoHeader.image_hight, 
-						infoHeader.image_width, 
-						infoHeader.total_colours, 
-						infoHeader.planes);
-	*/
-
 	
 	int image_size = infoHeader.image_hight * infoHeader.image_width;
 	fseek(fptr, fileHeader.pixel_offset, SEEK_SET);

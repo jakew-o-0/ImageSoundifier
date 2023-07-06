@@ -1,0 +1,86 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/paudio/paudio_util.c"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/paudio/paudio_util.c",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/paudio/paudio_callback.c"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/paudio/paudio_callback.c",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/parse_bitmap/parse_bmp.c"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/parse_bitmap/parse_bmp.c",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/main.c"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/main.c",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/paudio/paudio_util.h"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/paudio/paudio_util.h",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "resorces/libportaudio.a",
+      "-o",
+      "image_soundifier",
+      "./src/parse_bitmap/parse_bmp.h"
+    ],
+    "directory": "/home/jake/code/image_soundifier",
+    "file": "/home/jake/code/image_soundifier/src/parse_bitmap/parse_bmp.h",
+    "output": "/home/jake/code/image_soundifier/image_soundifier"
+  }
+]
