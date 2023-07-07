@@ -2,8 +2,8 @@
 #include <portaudio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "utils.h"
 
-#define TABLE_SIZE 2048
 
 
 
@@ -36,7 +36,7 @@ int main(void) {
 
 	// parse bitmap
 	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
-	get_header(data.wavetable, TABLE_SIZE, path);
+	gen_noise(data.wavetable, TABLE_SIZE, path);
 	{
 	// init portaudio
 	PaStream* stream;
@@ -59,8 +59,8 @@ int main(void) {
 	err = Pa_OpenStream(&stream,
 			NULL,
 			&output_params,
-			44100,
-			256,
+			SAMPLE_RATE,
+			TABLE_SIZE,
 			paClipOff,
 			patestCallback,
 			&data);
