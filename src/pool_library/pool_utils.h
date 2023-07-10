@@ -1,12 +1,9 @@
 #ifndef _POOL_
 #define _POOL_
-#include "../parse_bitmap/parse_bmp.h"
+#include "../utils.h"
 
 
-typedef struct {
-	chord* chord_ptr;
-	int size;
-} chord_pool;
+void append_chord(chord chord_instance, chord_pool* chordPool);
 
 
 #endif

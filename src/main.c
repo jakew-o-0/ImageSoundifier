@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "utils.h"
+#include "pool_library/pool_utils.h"
 
 
 
@@ -30,13 +31,13 @@ int main(void) {
 	// init data struct
 	paData data;
 	data.left_phase = data.right_phase = 0;
-	for(int i=0; i < TABLE_SIZE; i++) {
-		data.wavetable[i] = 0;
-	}
+	chord_pool* chordPool = malloc(sizeof(chord_pool));
 
 	// parse bitmap
-	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
-	gen_noise(data.wavetable, TABLE_SIZE, path);
+	char* path = "/home/jake/image_soundifier/resorces/test_image.bmp";
+	gen_chords(chordPool, path);
+
+
 	{
 	// init portaudio
 	PaStream* stream;
@@ -68,17 +69,25 @@ int main(void) {
 	if(err != paNoError)
 		catch_err(err);
 
+
 	// play stream
-	if(Pa_StartStream(stream) != paNoError)
+	if((err = Pa_StartStream(stream)) != paNoError)
 		catch_err(err);
 
-	printf("\n\nplaying sound for 10 secs\n");
-	Pa_Sleep(10 * 1000);
+	printf("\n\n\nplaying chord progression\n\n");
+	for(int i = 0; i < chordPool->size; i++){
+		for(int j = 0; j < TABLE_SIZE; j++) {
+			data.wavetable[j] = chordPool->chord_ptr[chordPool->size].wavetable[j];
+		}
+		int chord_duration = chordPool->chord_ptr[chordPool->size].chord_pixel.G;
+		Pa_Sleep(chord_duration * 100);
+	}
 
-	if(Pa_StopStream(stream) != paNoError)
+
+	if((err = Pa_StopStream(stream)) != paNoError)
 		catch_err(err);
 
-	if(Pa_CloseStream(stream) != paNoError)
+	if((Pa_CloseStream(stream)) != paNoError)
 		catch_err(err);
 
 	Pa_Terminate();
@@ -89,7 +98,6 @@ int main(void) {
 	printf("writing wave to file\n");
 	write_to_file(&data);
 }
-
 
 
 

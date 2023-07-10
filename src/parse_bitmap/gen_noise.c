@@ -1,5 +1,5 @@
 #include "parse_bmp.h"
-#include "../utils.h"
+#include "../pool_library/pool_utils.h"
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +43,7 @@ void gen_noise(float* wave_table, int table_size, char* path) {
 
 
 
-void gen_chords(float* chord_pool, char* path) {
+void gen_chords(chord_pool* chord_pool, char* path) {
 	FILE* fptr = fopen(path, "rb");
 	if(fptr == NULL) {
 		printf("error opening file");
@@ -61,24 +61,21 @@ void gen_chords(float* chord_pool, char* path) {
 
 	
 	for(int i; i < image_size; i++) {
-		pixel pix;
-		fread(&pix, sizeof(pixel), 1, fptr);
+		chord _temp_chord;
+		fread(&_temp_chord.chord_pixel, sizeof(pixel), 1, fptr);
 
-		int chord_size = pix.B % 5;
+		int chord_size = _temp_chord.chord_pixel.B % 5;
 		float _wavetable[TABLE_SIZE];
 
 		for(; i < chord_size; i++) {
-			fread(&pix, sizeof(pixel), 1, fptr);
-			int key = ((pix.B + pix.G + pix.R) / 3) % 12;
+			fread(&_temp_chord.chord_pixel, sizeof(pixel), 1, fptr);
+			int key = ((_temp_chord.chord_pixel.B + _temp_chord.chord_pixel.G + _temp_chord.chord_pixel.R) / 3) % 12;
 			calc_freq(key);
 			for(int j = 0; j < TABLE_SIZE; j++) {
 				_wavetable[j] += calc_wav_point(key, 0.5, 0, j);
 			}
-			
-			//calculate wave table
 		}
-		//pool_add(chord_pool, pixel)
-		//add final result to the to the pool
+		append_chord(_temp_chord, chord_pool);
 	}
 }
 
