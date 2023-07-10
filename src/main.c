@@ -32,9 +32,11 @@ int main(void) {
 	paData data;
 	data.left_phase = data.right_phase = 0;
 	chord_pool* chordPool = malloc(sizeof(chord_pool));
+	chordPool->size = 0;
+	chordPool->chord_ptr = calloc(0, sizeof(chord));
 
 	// parse bitmap
-	char* path = "/home/jake/image_soundifier/resorces/test_image.bmp";
+	char* path = "/home/jake/code/image_soundifier/resorces/test_image.bmp";
 	gen_chords(chordPool, path);
 
 

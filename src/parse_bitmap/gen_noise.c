@@ -1,8 +1,8 @@
 #include "parse_bmp.h"
 #include "../pool_library/pool_utils.h"
-#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 
 
@@ -60,7 +60,7 @@ void gen_chords(chord_pool* chord_pool, char* path) {
 	fseek(fptr, fileHeader.pixel_offset, SEEK_SET);
 
 	
-	for(int i; i < image_size; i++) {
+	for(int i = 0; i < image_size; i++) {
 		chord _temp_chord;
 		fread(&_temp_chord.chord_pixel, sizeof(pixel), 1, fptr);
 
