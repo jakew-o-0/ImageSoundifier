@@ -12,6 +12,10 @@ void append_chord(chord chord_instance, chord_pool* chordPool) {
 	}else
 		chordPool->chord_ptr = _cptr;
 
+	chordPool->chord_ptr[chordPool->size - 1].chord_pixel.B = chord_instance.chord_pixel.B;
+	chordPool->chord_ptr[chordPool->size - 1].chord_pixel.G = chord_instance.chord_pixel.G;
+	chordPool->chord_ptr[chordPool->size - 1].chord_pixel.R = chord_instance.chord_pixel.R;
+
 	for(int i = 0; i < TABLE_SIZE; i++)
 		chordPool->chord_ptr[chordPool->size - 1].wavetable[i] = chord_instance.wavetable[i];
 }

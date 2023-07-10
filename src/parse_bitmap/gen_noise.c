@@ -75,10 +75,23 @@ void gen_chords(chord_pool* chord_pool, char* path) {
 
 
 		for(int j=0; j < chord_size; j++) {
-			fread(&_temp_chord.chord_pixel, sizeof(pixel), 1, fptr);
+			pixel _temp_pix;
+			fread(&_temp_pix, sizeof(pixel), 1, fptr);
 
-			float key = ((_temp_chord.chord_pixel.B + _temp_chord.chord_pixel.G + _temp_chord.chord_pixel.R) / 3.) / 20.;
-			float amplitude = _temp_chord.chord_pixel.R / 1000.;
+			float average = ((_temp_pix.B + _temp_pix.G + _temp_pix.R) / 3.);
+			float key = (int)average % 12;
+			if(average > 255*0.75)
+				key += 12 * 3;
+			else if(average > 255*0.5 && average < 255*0.75)
+				key += 12 * 2;
+			else if(average > 255*0.25 && average < 255*0.5)
+				key += 12 * 1;
+			else if(average < 255*0.25)
+				key += 12 * 0;
+
+			float amplitude = _temp_pix.R / 1000.;
+
+
 			printf("key: %f\n", key);
 			printf("amplitude: %f\n\n", amplitude);
 
@@ -101,7 +114,7 @@ void gen_chords(chord_pool* chord_pool, char* path) {
 
 
 float calc_freq(float key) {
-	return 110 * pow(2.0, (1.0/12) * key);
+	return 13.75 * pow(2.0, (1.0/12.) * key);
 }
 
 
