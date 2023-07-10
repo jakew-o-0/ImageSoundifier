@@ -1,6 +1,7 @@
 #include "parse_bitmap/parse_bmp.h"
 #include <portaudio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 #include "utils.h"
 #include "pool_library/pool_utils.h"
@@ -16,7 +17,7 @@ typedef struct {
 } paData;
 
 void catch_err(PaError err);
-void write_to_file(paData* data);
+void write_to_file(paData* data, char* filename);
 void innit_paudio(PaStream* stream, paData* data);
 static int patestCallback( const void *inputBuffer, void *outputBuffer,
                            unsigned long framesPerBuffer,
@@ -73,21 +74,34 @@ int main(void) {
 
 
 	// play stream
-	if((err = Pa_StartStream(stream)) != paNoError)
-		catch_err(err);
-
 	printf("\n\n\nplaying chord progression\n\n");
+
 	for(int i = 0; i < chordPool->size; i++){
 		for(int j = 0; j < TABLE_SIZE; j++) {
 			data.wavetable[j] = chordPool->chord_ptr[chordPool->size].wavetable[j];
 		}
+
+		if((err = Pa_StartStream(stream)) != paNoError)
+			catch_err(err);
+
 		int chord_duration = chordPool->chord_ptr[chordPool->size].chord_pixel.G;
-		Pa_Sleep(chord_duration * 100);
+		if(chord_duration < 1)
+			chord_duration = 1;
+
+		Pa_Sleep(chord_duration * 1000);
+
+		if((err = Pa_StopStream(stream)) != paNoError)
+			catch_err(err);
+
+
+		{
+			char fname[20];
+			sprintf(fname, "./wave_tables/%d", i);
+			write_to_file(&data, fname);
+		}
 	}
 
 
-	if((err = Pa_StopStream(stream)) != paNoError)
-		catch_err(err);
 
 	if((Pa_CloseStream(stream)) != paNoError)
 		catch_err(err);
@@ -98,7 +112,6 @@ int main(void) {
 
 
 	printf("writing wave to file\n");
-	write_to_file(&data);
 }
 
 
@@ -143,8 +156,8 @@ void innit_paudio(PaStream* stream, paData* data) {
 
 
 
-void write_to_file(paData* data) {
-	FILE *fptr =  fopen("./wavetable", "wb");
+void write_to_file(paData* data, char* filename) {
+	FILE *fptr =  fopen(filename, "wb");
 	fwrite(data, sizeof(paData), 1, fptr);
 }
 
