@@ -5,14 +5,10 @@ wavtab = []
 for i in range(0, 15):
     path = "./wave_tables/"
     path += str(i)
-    with open(path, "rb") as wavetable:
-        buff = bytearray(wavetable.read(wavetable.__sizeof__()))
-        data = np.frombuffer(buff, dtype=np.float32);
-        print(data)
-        wavtab.append(data)
+    data = np.fromfile(path, float)
+    for i in data:
+        wavtab.append(i)
     
-for i in wavtab:
-    print(i)
 
 plt.plot(wavtab)
 plt.show()
