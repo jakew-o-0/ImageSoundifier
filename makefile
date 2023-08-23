@@ -1,7 +1,7 @@
-CC = gcc
-CFLAGS = -ggdb3 -lrt -lm -lasound -ljack -pthread -lpulse
-SOURCES = $(shell find ./src -name '*.c')
-HEADERS = $(shell find ./src -name '*.h')
+CC = g++
+CFLAGS = -g -lrt -lm -lasound -ljack -pthread -lpulse
+SOURCES = $(shell find ./src -name '*.cpp')
+HEADERS = $(shell find ./src -name '*.hpp')
 RESORCES = resorces/libportaudio.a
 
 image_soundifier:
