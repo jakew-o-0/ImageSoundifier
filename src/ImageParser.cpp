@@ -9,7 +9,7 @@ ImageParser::ImageParser(std::string path) {
     std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(input), {});
 
     // allocate that buffer into ImageBuffer
-    std::copy(buffer.begin(), buffer.end(), ImageBuffer.begin());
+    std::copy(buffer.begin(), buffer.end(), ImageBuffer.begin());   // TODO: segfault on this line 
 
     // get the offset for the pixel bytes
     std::vector<unsigned char> buffSlice(buffer.begin() + 10, buffer.end());
