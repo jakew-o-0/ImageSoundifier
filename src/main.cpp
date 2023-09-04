@@ -1,4 +1,5 @@
-#include "./ImageParser/ImageParser.hpp"
+#include "../headers/ImageParser.hpp"
+
 #include <fstream>
 #include <iostream>
 
