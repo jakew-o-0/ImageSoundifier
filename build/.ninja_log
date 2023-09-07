@@ -1,7 +1,0 @@
-# ninja log v5
-306	337	1693862406483165966	ImageSoundifier	2ebd593fcac22eab
-2	201	1693862406346498739	CMakeFiles/ImageSoundifier.dir/src/main.cpp.o	c05cb9ccdd19909d
-2	306	1693862406449832496	CMakeFiles/ImageSoundifier.dir/src/ImageParser.cpp.o	e283af1f5a6aafca
-1	29	1693862907074710798	build.ninja	636b2b3fd3082c70
-1	307	1693862907394711549	CMakeFiles/ImageSoundifier.dir/src/ImageParser.cpp.o	e283af1f5a6aafca
-307	337	1693862907424711619	ImageSoundifier	2ebd593fcac22eab

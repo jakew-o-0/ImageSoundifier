@@ -1,17 +1,18 @@
 #pragma once
-
 #include <vector>
 #include <string>
 
-#define TABLE_SIZE 2048
+constexpr int TABLE_SIZE = 2048;
 
 #pragma pack(push, 1)
+/*
 typedef struct {
     unsigned short filetype;
     unsigned int size;
     unsigned int _padding;
     unsigned int pixel_offset;
 } bmp_fileHeader;
+*/
 
 typedef struct {
     unsigned char B;
@@ -25,6 +26,7 @@ typedef struct {
     std::vector<float> wavetable;
 } chord;
 
+/*
 typedef struct {
     unsigned int header_size;
     unsigned int image_width;
@@ -36,17 +38,18 @@ typedef struct {
     unsigned int total_colours;
     unsigned int __pading;
 } bmp_infoHeader;
+*/
 
 
 class ImageParser
 {
 private:
     std::vector<unsigned char> ImageBuffer {};
-    int ImageOffset = 0;
+    int ImageOffset;
     
 public:
-    ImageParser(std::string path);
-    ~ImageParser();
+    explicit ImageParser(std::string& path);
+    ~ImageParser() = default;
     void GenCordProgression(std::vector<chord> &ChordTable);
     float calcFrequency(float key);
     float calcWavePoint(float f, float a, float p, int n);

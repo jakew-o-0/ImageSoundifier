@@ -3,26 +3,20 @@
 #include <cmath>
 #include <iostream>
 
-ImageParser::ImageParser(std::string path) {
-    // read bitmap into a buffer
+ImageParser::ImageParser(std::string& path) {
+    // read bitmap into a buffer && allocate that buffer into ImageBuffer
     std::ifstream input(path, std::ios::binary);
-    std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(input), {});
-
-    // allocate that buffer into ImageBuffer
-    std::copy(buffer.begin(), buffer.end(), ImageBuffer.begin());   // TODO: segfault on this line 
+    ImageBuffer.assign(std::istreambuf_iterator<char>(input), {});
 
     // get the offset for the pixel bytes
-    std::vector<unsigned char> buffSlice(buffer.begin() + 10, buffer.end());
     int shiftSize = 8 * 4;
-    for (auto i : buffSlice)
-    {
+    std::vector<unsigned char> buffSlice(ImageBuffer.begin() + 10,
+                                         ImageBuffer.begin() + 10 + shiftSize + 1);
+    for (auto i : buffSlice) {
         ImageOffset |= (i << shiftSize);
         shiftSize -= 8;
     }
 
-}
-
-ImageParser::~ImageParser() {
 }
 
 
