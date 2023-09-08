@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cmath>
 #include <iostream>
+#include <ranges>
 
 ImageParser::ImageParser(std::string& path) {
     // read bitmap into a buffer && allocate that buffer into ImageBuffer
@@ -9,9 +10,11 @@ ImageParser::ImageParser(std::string& path) {
     ImageBuffer.assign(std::istreambuf_iterator<char>(input), {});
 
     // get the offset for the pixel bytes
-    int shiftSize = 8 * 4;
+    // by combining the 4 bytes that make the in for the offset to the start of the pixels
     std::vector<unsigned char> buffSlice(ImageBuffer.begin() + 10,
-                                         ImageBuffer.begin() + 10 + shiftSize + 1);
+                                         ImageBuffer.begin() + 10 + 4);
+    ImageOffset = 0;
+    int shiftSize = 32;
     for (auto i : buffSlice) {
         ImageOffset |= (i << shiftSize);
         shiftSize -= 8;
@@ -41,13 +44,14 @@ void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
             currPix.R = ImageBuffer[BuffOffset + 2];
 
             // define wave rules from the pixel
-            float freqency = calcFrequency((float)currPix.B);
+            double freqency = calcFrequency(currPix.B);
             // ensure the amplitude is within the range -1 to 1
-            float amplitude = 2 * currPix.G / 255 - 1;
+            double amplitude = 2. * currPix.G / 255 - 1;
 
             // create wave
+            currCord.wavetable.resize(TABLE_SIZE);
             for(int n = 0; n < TABLE_SIZE; n++) {
-                float point =  calcWavePoint(freqency, amplitude, currPix.R, n);
+                double point =  calcWavePoint(freqency, amplitude, currPix.R, n);
                 currCord.wavetable[n] += point;
             }
 
@@ -58,11 +62,11 @@ void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
 }
 
 
-float ImageParser::calcFrequency(float key) {
-    return 13.75 * powf(2.0, (1.0/12.0) * key);
+double ImageParser::calcFrequency(float key) {
+    return 13.75 * pow(2.0, (1.0/12.0) * key);
 }
 
 
-float ImageParser::calcWavePoint(float f, float a, float p, int n) {
-	return a * sinf((2. * M_PI * f * ((float)n / 44100.)) + p);
+double ImageParser::calcWavePoint(double f, double a, double p, int n) {
+	return a * sin((2. * M_PI * f * (n / 44100.)) + p);
 }

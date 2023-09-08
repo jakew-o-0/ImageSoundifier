@@ -23,7 +23,7 @@ typedef struct {
 
 typedef struct {
     pixel chord_pixel;
-    std::vector<float> wavetable;
+    std::vector<double> wavetable;
 } chord;
 
 /*
@@ -51,6 +51,6 @@ public:
     explicit ImageParser(std::string& path);
     ~ImageParser() = default;
     void GenCordProgression(std::vector<chord> &ChordTable);
-    float calcFrequency(float key);
-    float calcWavePoint(float f, float a, float p, int n);
+    static double calcFrequency(float key);
+    static double calcWavePoint(double f, double a, double p, int n);
 };
