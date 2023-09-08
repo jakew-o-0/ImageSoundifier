@@ -51,8 +51,20 @@ void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
             // create wave
             currCord.wavetable.resize(TABLE_SIZE);
             for(int n = 0; n < TABLE_SIZE; n++) {
-                double point =  calcWavePoint(freqency, amplitude, currPix.R, n);
+                double point = calcWavePoint(freqency, amplitude, currPix.R, n);
                 currCord.wavetable[n] += point;
+            }
+
+            double max = 0;
+            double min = 10;
+            for(auto n : currCord.wavetable) {
+                if(n > max) { max = n; }
+                if(n < min) { min = n; }
+            }
+
+            for(int n = 0; n < TABLE_SIZE; n++) {
+                currCord.wavetable[n] *= 2;
+                currCord.wavetable[n] /= max - min;
             }
 
             ChordTable.push_back(currCord);

@@ -1,14 +1,22 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
-wavtab = []
-for i in range(0, 15):
-    path = "./wave_tables/"
-    path += str(i)
-    data = np.fromfile(path, float)
-    for i in data:
-        wavtab.append(i)
-    
+WaveTable = []
+with(open("/home/jake/projects/ImageSoundifier/resorces/testwavetable.txt", 'r') as WTFile):
+    for i in WTFile:
+        WaveTable.append( float(i) )
+print(WaveTable)
+max = 0
+min = 10
+for i in WaveTable:
+    if(i > max):
+        max = i
 
-plt.plot(wavtab)
+    if(i < min):
+        min = i
+
+print("max: ", max)
+print("min: ", min)
+
+
+plt.plot(WaveTable)
 plt.show()
