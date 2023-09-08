@@ -67,8 +67,8 @@ void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
                 currCord.wavetable[n] /= max - min;
             }
 
-            ChordTable.push_back(currCord);
             // add wave to the chord wavetable
+            ChordTable.push_back(currCord);
         }
     }
 }
