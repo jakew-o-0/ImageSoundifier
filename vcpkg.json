@@ -1,0 +1,10 @@
+{
+  "name" : "imagesoundifier",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "962e5e39f8a25f42522f51fffc574e05a3efd26b",
+  "dependencies" : [ {
+    "name" : "portaudio",
+    "version>=" : "19.7#5",
+    "$comment" : "    # this is heuristically generated, and may not be correct\n\n    find_package(portaudio CONFIG REQUIRED)\n\n    target_link_libraries(main PRIVATE portaudio_static)\n"
+  } ]
+}

@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ImageSoundifier::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ImageSoundifier-Debug-874b934aa14543a28173.json",
+					"jsonFile" : "target-ImageSoundifier-Debug-3b8588362804e6d330fa.json",
 					"name" : "ImageSoundifier",
 					"projectIndex" : 0
 				}
@@ -55,6 +55,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 6
 	}
 }

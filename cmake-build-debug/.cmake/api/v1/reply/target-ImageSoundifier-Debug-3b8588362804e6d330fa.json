@@ -5,32 +5,47 @@
 			"path" : "ImageSoundifier"
 		}
 	],
-	"backtrace" : 1,
+	"backtrace" : 2,
 	"backtraceGraph" : 
 	{
 		"commands" : 
 		[
+			"_add_executable",
 			"add_executable",
+			"target_link_libraries",
 			"target_include_directories"
 		],
 		"files" : 
 		[
+			"/home/jake/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake",
 			"CMakeLists.txt"
 		],
 		"nodes" : 
 		[
 			{
-				"file" : 0
+				"file" : 1
 			},
 			{
-				"command" : 0,
-				"file" : 0,
+				"command" : 1,
+				"file" : 1,
 				"line" : 7,
 				"parent" : 0
 			},
 			{
-				"command" : 1,
+				"command" : 0,
 				"file" : 0,
+				"line" : 598,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 10,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 1,
 				"line" : 8,
 				"parent" : 0
 			}
@@ -48,7 +63,7 @@
 			"includes" : 
 			[
 				{
-					"backtrace" : 2,
+					"backtrace" : 4,
 					"path" : "/home/jake/projects/ImageSoundifier/headers"
 				}
 			],
@@ -57,14 +72,15 @@
 			{
 				"backtraces" : 
 				[
-					1
+					2
 				],
 				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
@@ -80,6 +96,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lportaudio",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-lrt -lm -lasound -pthread",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
@@ -98,20 +124,27 @@
 			"sourceIndexes" : 
 			[
 				0,
-				1
+				1,
+				2
 			]
 		}
 	],
 	"sources" : 
 	[
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/AudioInterface.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/ImageParser.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{
-			"backtrace" : 1,
+			"backtrace" : 2,
 			"compileGroupIndex" : 0,
 			"path" : "src/main.cpp",
 			"sourceGroupIndex" : 0

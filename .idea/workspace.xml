@@ -16,12 +16,47 @@
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_TOOLCHAIN_FILE=/home/jake/.vcpkg-clion/vcpkg/scripts/buildsystems/vcpkg.cmake" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01d04577-747d-4639-837e-db2e12e600c1" name="Changes" comment="done with generating the chord progression">
+    <list default="true" id="01d04577-747d-4639-837e-db2e12e600c1" name="Changes" comment="fixed errors with clipping">
+      <change afterPath="$PROJECT_DIR$/headers/AudioInterface.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AudioInterface.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-afdf0cce2114829f07c4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-1be496eeebf0f13b835e.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-2fa6db1de560fc935f3a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2023-09-07T18-05-34-0464.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-ImageSoundifier-Debug-874b934aa14543a28173.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-8a7bb2302e0b74717519.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.26.4/CompilerIdCXX/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ImageSoundifier.dir/src/ImageParser.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ImageSoundifier.dir/src/ImageParser.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ImageSoundifier.dir/src/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/ImageSoundifier.dir/src/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/ImageSoundifier" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/ImageSoundifier" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/headers/ImageParser.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/headers/ImageParser.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resorces/libportaudio.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resorces/testwavetable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/resorces/testwavetable.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageParser.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageParser.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +69,9 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -62,10 +100,21 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/PortAudio.dir" />
+      <recent name="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Export/90a8b282bce0779409342a760050f91f" />
+      <recent name="$PROJECT_DIR$/cmake-build-debug/CMakeFiles" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Export" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.plot_wavetable">
     <configuration name="ImageSoundifier" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="ImageSoundifier" TARGET_NAME="ImageSoundifier" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="ImageSoundifier" RUN_TARGET_NAME="ImageSoundifier">
       <method v="2">
@@ -98,6 +147,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="CMake Application.ImageSoundifier" />
+      <item itemvalue="Python.plot_wavetable" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.plot_wavetable" />
@@ -113,7 +166,9 @@
       <option name="presentableId" value="Default" />
       <updated>1694109927968</updated>
       <workItem from="1694109929253" duration="165000" />
-      <workItem from="1694199587861" duration="8320000" />
+      <workItem from="1694199587861" duration="8583000" />
+      <workItem from="1694211399237" duration="2203000" />
+      <workItem from="1694255511313" duration="23423000" />
     </task>
     <task id="LOCAL-00001" summary="done with generating the chord progression">
       <option name="closed" value="true" />
@@ -139,32 +194,44 @@
       <option name="project" value="LOCAL" />
       <updated>1694207857949</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed errors with clipping">
+      <option name="closed" value="true" />
+      <created>1694207921100</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694207921100</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VCPKGProject">
-    <isAutomaticEditVcpkgJson value="false" />
+    <isAutomaticEditVcpkgJson value="true" />
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticFoundErrors value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed errors with clipping" />
     <MESSAGE value="done with generating the chord progression" />
-    <option name="LAST_COMMIT_MESSAGE" value="done with generating the chord progression" />
+    <MESSAGE value="fixed errors with clipping" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed errors with clipping" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/main.cpp</url>
-          <line>26</line>
-          <option name="timeStamp" value="6" />
+          <line>10</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

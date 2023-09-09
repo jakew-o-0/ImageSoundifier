@@ -4,7 +4,6 @@
 
 constexpr int TABLE_SIZE = 2048;
 
-#pragma pack(push, 1)
 /*
 typedef struct {
     unsigned short filetype;
@@ -12,21 +11,6 @@ typedef struct {
     unsigned int _padding;
     unsigned int pixel_offset;
 } bmp_fileHeader;
-*/
-
-typedef struct {
-    unsigned char B;
-    unsigned char G;
-    unsigned char R;
-} pixel;
-#pragma pack(pop)
-
-typedef struct {
-    pixel chord_pixel;
-    std::vector<double> wavetable;
-} chord;
-
-/*
 typedef struct {
     unsigned int header_size;
     unsigned int image_width;
@@ -40,9 +24,19 @@ typedef struct {
 } bmp_infoHeader;
 */
 
+typedef struct {
+    unsigned char B;
+    unsigned char G;
+    unsigned char R;
+} pixel;
 
-class ImageParser
-{
+typedef struct {
+    pixel chord_pixel;
+    std::vector<double> wavetable;
+} chord;
+
+
+class ImageParser {
 private:
     std::vector<unsigned char> ImageBuffer {};
     int ImageOffset;
@@ -51,6 +45,6 @@ public:
     explicit ImageParser(std::string& path);
     ~ImageParser() = default;
     void GenCordProgression(std::vector<chord> &ChordTable);
-    static double calcFrequency(float key);
+    static double calcFrequency(double key);
     static double calcWavePoint(double f, double a, double p, int n);
 };

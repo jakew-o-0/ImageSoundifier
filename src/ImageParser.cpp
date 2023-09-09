@@ -2,7 +2,6 @@
 #include <fstream>
 #include <cmath>
 #include <iostream>
-#include <ranges>
 
 ImageParser::ImageParser(std::string& path) {
     // read bitmap into a buffer && allocate that buffer into ImageBuffer
@@ -74,10 +73,9 @@ void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
 }
 
 
-double ImageParser::calcFrequency(float key) {
+double ImageParser::calcFrequency(double key) {
     return 13.75 * pow(2.0, (1.0/12.0) * key);
 }
-
 
 double ImageParser::calcWavePoint(double f, double a, double p, int n) {
 	return a * sin((2. * M_PI * f * (n / 44100.)) + p);
