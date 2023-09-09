@@ -9,7 +9,7 @@ void writeChordTableToFile(std::vector<chord>& ChordTable);
 
 int main() {
     std::vector<chord> ChordTable;
-    std::string path = "/home/jake/projects/ImageSoundifier/resorces/MultiColouredImage.bmp";
+    std::string path = "/home/jake/projects/ImageSoundifier/resorces/malice.bmp";
 
     ImageParser parser = ImageParser(path);
     parser.GenCordProgression(ChordTable);

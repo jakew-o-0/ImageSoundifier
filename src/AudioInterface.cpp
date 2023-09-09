@@ -26,6 +26,8 @@ int AudioInterface::Callback(const void *input, void *output, unsigned long fram
     for(auto i : WaveTable[WaveTablePos].wavetable) {
         *(out++) = i;
     }
+
+    std::cout << "pos: " << WaveTablePos << "/" << WaveTable.size() << std::endl;
     WaveTablePos++;
 
     return paContinue;

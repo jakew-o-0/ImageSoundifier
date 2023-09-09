@@ -2,7 +2,7 @@
 #include <vector>
 #include <string>
 
-constexpr int TABLE_SIZE = 2048;
+constexpr int TABLE_SIZE = 1024;
 
 /*
 typedef struct {

@@ -24,7 +24,7 @@ ImageParser::ImageParser(std::string& path) {
 
 void ImageParser::GenCordProgression(std::vector<chord> &ChordTable) {
     //itterating through 4 pixel at a time (4 * 3 bytes)
-    for(int i = 0; i < ((int)ImageBuffer.size() / (4*3)); i++) {
+    for(int i = 0; i < (ImageBuffer.size() / (4*3)); i++) {
         int BuffOffset = (i * (3 * 4)) + ImageOffset;
 
         // allocate the size of the wavetable as 0s
