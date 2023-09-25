@@ -1,22 +1,27 @@
 #pragma once
-#include "AudioInterface.hpp"
 #include <portaudio.h>
-#include "ImageParser.hpp"
+#include <queue>
 #include <vector>
+#include "ImageParser.hpp"
 
 constexpr int SAMPLE_RATE = 44100;
 
 class AudioInterface {
+public:
+    bool IsValid;
+
 private:
-    std::vector<chord>& WaveTable;
-    int WaveTablePos = 0;
+    std::queue<double> AudioBuff;
+    ImageParser& parser;
     PaStream* stream;
     PaError err;
 
 public:
-    explicit AudioInterface(std::vector<chord>& Table);
+    explicit AudioInterface( ImageParser& parser_ );
     ~AudioInterface() = default;
     void PlayStream();
+    void EndStream();
+    void PushAudioQueue( std::vector<double>& WaveTable );
 
 private:
     void CatchErr() const;

@@ -1,3 +1,3 @@
-/home/jake/projects/ImageSoundifier/cmake-build-debug/CMakeFiles/ImageSoundifier.dir
-/home/jake/projects/ImageSoundifier/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/jake/projects/ImageSoundifier/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/jake/code/ImageSoundifier/cmake-build-debug/CMakeFiles/ImageSoundifier.dir
+/home/jake/code/ImageSoundifier/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/jake/code/ImageSoundifier/cmake-build-debug/CMakeFiles/rebuild_cache.dir
